@@ -19,8 +19,8 @@
             <cfset local.num = form.number>
             <cfset local.value=createObject("component","components.calculate")>
             <cfset local.result=local.value.fn_result(local.num)>
-            #local.result# 
-        </cfif> 
+            #local.result#
+        </cfif>
     </div>
 </body>
 </html>
