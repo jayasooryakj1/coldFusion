@@ -2,7 +2,7 @@
 <head>
 <title>Qn 5</title>
 </head>
-<body class =>
+<body>
     <form method="POST">
         <div>
             <label>Enter your date of birth</label>
@@ -18,16 +18,16 @@
                 <cfset newObject = createObject("component", "components.calc")>
                 <cfset result = newObject.valueFunction(form.dobYou,form.dobMother)>
                 <div>
-                    <span>Your Age </span><span> #result[1]#</span>
+                    Your Age #result[1]#
                 </div>
                 <div>
-                    <span>Mothers age during delivery </span><span> #result[2]#</span>
+                    Mothers age during delivery #result[2]#
                 </div>
                 <div>
-                    <span>Remaining days for your birthday</span><span> #result[3]#</span>
+                    Remaining days for your birthday  #result[3]#
                 </div>
                 <div>
-                    <span>Remaining days for mothers birthday</span><span> #result[4]#</span>
+                    Remaining days for mothers birthday #result[4]#
                 </div>
             </cfoutput>
         </cfif>
