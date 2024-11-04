@@ -8,17 +8,16 @@
 </head>
 <body>
     <div>
-        <h4>Rating</h4>
         <form action="" method="POST">
             <div>
-                <input type="text" name="number">
+                <input type="text" name="subString">
                 <input type="submit" value="Submit">
             </div>
         </form>
-        <cfif structKeyExists(form, "number")> 
-            <cfset local.num = form.number>
-            <cfset local.value=createObject("component","components.calculate")>
-            <cfset local.result=local.value.fn_result(local.num)>
+        <cfif structKeyExists(form, "subString")> 
+            <cfset local.search = form.subString>
+            <cfset local.value=createObject("component","components.qn13")>
+            <cfset local.result=local.value.fn_result(local.search)>
             #local.result#
         </cfif>
     </div>
