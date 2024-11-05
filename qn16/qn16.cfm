@@ -1,4 +1,5 @@
 <cfoutput>
-    <cfset obj = new qn16()>
-    <cfset result = obj.funct>
+    <cfset obj = new components.qn16()>
+    <cfset result = obj.func()>
+    #result#
 </cfoutput>
