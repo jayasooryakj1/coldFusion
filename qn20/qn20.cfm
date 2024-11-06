@@ -10,14 +10,14 @@
     <div>
         <form action="" method="POST">
             <div>
-                <cfset local.captchaText = "expression">
+                <cfset local.captchaText = "asdfgh">
                 <cfimage action="captcha" text="#local.captchaText#"  difficulty="high"><br>
                 <input type="text" placeholder="Enter Captcha" name="captchaInput"><br>
                 <input type="text" placeholder="Enter Email" name="email"><br>
                 <input type="submit" value="Submit">
             </div>
         </form>
-        <cfif structKeyExists(form, captchaInput) && structKeyExists(form, email)>
+        <cfif structKeyExists(form, "captchaInput") && structKeyExists(form, "email")>
             <cfset local.value=createObject("component","components.qn20")>
             <cfset local.captchaInput = "#form.captchaInput#">
             <cfset local.email = "#form.email#">
@@ -25,7 +25,7 @@
             <cfif #local.result#==1>
                 <cfdump  var="Login successful">
             <cfelse>
-                <cfdump  var="Login unseuccesful">
+                <cfdump  var="Login unsuccesful">
             </cfif>
         </cfif>
     </div>

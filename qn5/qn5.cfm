@@ -1,36 +1,41 @@
 <html>
 <head>
-<title>Qn 5</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../bootstrap-5.0.2-dist/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <title>Qn 5</title>
 </head>
 <body>
-    <form method="POST">
-        <div>
+    <form method = "POST">
+        <div class = " text-center border m-4 p-3">
             <label>Enter your date of birth</label>
-            <input type="date" name="dobYou" >
+            <input type = "date" name = "dobYou">
             <br>
-            <label>Enter your mothers date of birth</label>
-            <input type="date" name="dobMother">
+            <label class="mt-3">Enter your mothers date of birth</label>
+            <input type = "date" name = "dobMother">
             <br>
-            <input type="submit">
+            <input class="mt-3" type = "submit">
         </div>
+        <div class = " text-center border p-4 m-4">
         <cfif isDefined("form.dobYou") && isDefined("form.dobMother")>
             <cfoutput>
-                <cfset newObject = createObject("component", "components.calc")>
-                <cfset result = newObject.valueFunction(form.dobYou,form.dobMother)>
+                <cfset newObject = createObject("component", "components.qn5")>
+                <cfset local.result = newObject.dateOfBirth(form.dobYou,form.dobMother)>
                 <div>
-                    Your Age #result[1]#
+                    Your Age #local.result[1]#
                 </div>
                 <div>
-                    Mothers age during delivery #result[2]#
+                    Mothers age during delivery #local.result[2]#
                 </div>
                 <div>
-                    Remaining days for your birthday  #result[3]#
+                    Remaining days for your birthday  #local.result[3]#
                 </div>
                 <div>
-                    Remaining days for mothers birthday #result[4]#
+                    Remaining days for mothers birthday #local.result[4]#
                 </div>
             </cfoutput>
         </cfif>
+        </div>
     </form>
 </body>
 </html>

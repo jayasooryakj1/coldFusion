@@ -1,8 +1,8 @@
-<cffunction  name="func">
+<cffunction  name = "func">
     <cfset res = " ">
-    <cfloop index="i" from=1 to=3>
+    <cfloop index = "i" from = 1 to = 3>
         <cfset res = res & i &" ">
-        <cfloop index="j" from=1 to=2>
+        <cfloop index = "j" from = 1 to = 2>
                 <cfset res = res & (j*3)+i & " ">
         </cfloop>
         <cfset res = res & "<br>">
