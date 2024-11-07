@@ -17,15 +17,15 @@
             <br>
             <input class="mt-4" type = "submit">
         </div>
+    </form>
         <div class="border m-4 p-4"">
         <cfif isDefined("form.key") && isDefined("form.value")>
             <cfoutput>
-                <cfset session.keyValue = structNew()>
-                <cfset session.keyValue[form.key] = form.value>
-                <cfdump  var = #session.keyValue#>
+                <cfset local.value=createObject("component","components.qn8")>
+                <cfset local.result=local.value.structFunction("form.key", "form.value")>
+                <cfdump  var="#local.result#">
             </cfoutput>
         </cfif>
         </div>
-    </form>
 </body>
 </html>
