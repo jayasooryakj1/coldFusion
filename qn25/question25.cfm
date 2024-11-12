@@ -8,15 +8,15 @@
         </head>
         <body>
             <cfoutput>
-                <form action = "" method = "POST" enctype="multipart/form-data">
+                <form action = "" method = "POST">
                     <div class = "text-center mt-3 w-100">
-                        <input type="file" name="dataFile" class="form-control w-25 mx-auto">
-                        <input type = "submit" value = "Read from file" name="submitButton" class = "btn btn-primary my-auto mt-3 w-25">
+                        <textarea name = "text" placeholder = "Enter the string" class = "w-25 mx-auto  mx-auto form-control border border-success"></textarea>
+                        <input type = "submit" value = "Submit" name="submitButton" class = "btn btn-primary my-auto mt-3 w-25">
                     </div>
                 </form>
                 <cfif structKeyExists(form,"submitButton")>
-                    <cfset local.obj  =  new Components.qn26()>
-                    <cfset local.result  =  local.obj.splitString("#form.dataFile#")>
+                    <cfset local.obj  =  new Component.tagCloud()>
+                    <cfset local.result  =  local.obj.wordCount(form.text)>
                     <div class = "w-25 mx-auto mt-5 rounded-pill p-4">
                         <div class = "text-center"><cfdump var="#local.result#"></div>
                     </div> 

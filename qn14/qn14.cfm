@@ -1,7 +1,7 @@
 <cfapplication name="app" sessionmanagement="Yes">
 <html>
     <head>
-        <title>>qn14</title>
+        <title>qn14</title>
         <link rel="stylesheet" href="../../bootstrap-5.0.2-dist/bootstrap-5.0.2-dist/css/bootstrap.min.css">
     </head>
     <body class="p-5">
