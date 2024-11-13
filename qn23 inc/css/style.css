@@ -1,0 +1,58 @@
+body{
+    background-color: #669900;
+    margin:0;
+    padding:0;
+}
+
+.mid-container{
+    margin:12px auto 20px  auto;
+    width:640px;
+}
+
+.header-logo{
+    background-color: #99cc00;
+    width:100%;
+    height:80px;
+}
+
+header{
+    border-bottom: 1px solid;
+    border-bottom-style: dotted;
+}
+
+.header-div-one{
+    font-size:14px;
+}
+
+.qns-label{
+    font-size: 15px;
+}
+
+.qn1-select{
+    font-size:14px;
+}
+
+.salaryCent{
+    width:20px;
+}
+
+.salaryDollar{
+    width:9vw;
+}
+
+.qn5-div{
+    border-bottom: 1px solid;
+    border-bottom-style: dotted;
+}
+
+.fname{
+    width:6vw;
+}
+
+.lname{
+    width:10vw;
+}
+
+.userEmail{
+    width:20vw;
+}
