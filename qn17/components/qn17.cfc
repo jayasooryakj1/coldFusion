@@ -1,5 +1,5 @@
 <cfcomponent>
-    <cffunction  name = "printNumber" returnType = "any">
+    <cffunction  name = "printNumber" returnType = "array">
     <cfargument name = "number" type ="any" required = "true">
     <cfset result = []>
         <cfloop index = "i" from = 1 to = #number#>

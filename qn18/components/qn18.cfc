@@ -1,5 +1,5 @@
 <cfcomponent>
-    <cffunction  name="query">
+    <cffunction  name="query" returnType="query">
         <cfset user = queryNew("id,name,email", "integer,varchar,varchar")>
         <cfset queryAddRow(user)>
         <cfset querySetCell(user, "id", "1")>

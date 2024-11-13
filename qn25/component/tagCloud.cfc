@@ -43,12 +43,10 @@
                 <cfset local.decreaseWordCount[i] = local.wordCount>
             </cfif>
         </cfloop>
-        <!--- decreasing order of the count of words --->
         <cfset local.decreaseWordCountArray = structSort(decreaseWordCount, "numeric", "desc")>
         <cfloop array="#decreaseWordCountArray#" item="item">
             <cfset local.decreaseWordCountNew[item] = local.decreaseWordCount[item]>
         </cfloop>
-        <!--- decreasing order of length of the text --->
         <cfset local.letterCount = 0>
         <cfloop collection="#local.decreaseWordCount#" item="word">
             <cfset letterCount = word.len()>
@@ -58,7 +56,6 @@
         <cfloop array="#decreaseTextLengthArray#" item="item">
             <cfset local.decreaseTextLengthNew[item] = local.decreaseTextLength[item]>
         </cfloop>
-        <!--- alphabetical order --->
         <cfset local.alphabetOrderArray = structSort(decreaseWordCount, "text", "desc")>
         <cfset arraySort(alphabetOrderArray, "textnocase")>
         <cfloop array="#local.alphabetOrderArray#" item="item">

@@ -17,13 +17,12 @@
                 </div>
             </form>
             <div class="border text-center p-2">
-                <cfif structKeyExists(form,"submit")>
-                    
+                <cfif structKeyExists(form,"submit")>          
                     <cfset local.newObject = createObject("component", "components.qn14")>
                     <cfset local.result = local.newObject.fnCheck(form.imgName,form.imgDescription,form.imgUpload)>
                     <div class="p-3">
                     <cfif local.result["error"] eq 0>
-                       <span class="fw-bold"><cfdump  var="Size should not exceed 1MB"></span>
+                    <span class="fw-bold"><cfdump  var="Size should not exceed 1MB"></span>
                     <cfelse>
                         <a href="./qn14Res.cfm" class="d-flex">
                             <div class="border border-success h-100 me-3"><cfimage action="writeToBrowser" source="#local.result["imgUpload"]#" width="20" height="20"></div>
@@ -31,7 +30,7 @@
                         </a>
                     </cfif>
                     </div>
-                   <cfset session.objImage = local.result>
+                <cfset session.objImage = local.result>
                 </cfif>
             </div>
         </cfoutput>

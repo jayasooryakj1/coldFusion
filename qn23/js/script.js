@@ -1,44 +1,44 @@
 function val(event)
 {
-    let position=document.getElementById("position").value;
+    let designation=document.getElementById("designation").value;
     let startDate=document.getElementById("startDate").value;
-    let portfolio=document.getElementById("portfolio").value;
+    let webSite=document.getElementById("webSite").value;
     let salaryDollar=document.getElementById("salaryDollar").value;
     let salaryCent=document.getElementById("salaryCent").value;
-    let firstName=document.getElementById("firstName").value;
-    let lastName=document.getElementById("lastName").value;
-    let email=document.getElementById("email").value;
-    let phone1=document.getElementById("phone1").value;
-    let phone2=document.getElementById("phone2").value;
-    let phone3=document.getElementById("phone3").value;
-    let phn=phone1 + phone2 + phone3;
+    let fname=document.getElementById("fname").value;
+    let lname=document.getElementById("lname").value;
+    let userEmail=document.getElementById("userEmail").value;
+    let phn1=document.getElementById("phn1").value;
+    let phn2=document.getElementById("phn2").value;
+    let phn3=document.getElementById("phn3").value;
+    let phn=phn1 + phn2 + phn3;
   
     const urlPattern = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    document.getElementById("errorPosition").innerHTML="";
-    document.getElementById("errorStart").innerHTML="";
-    document.getElementById("errorPortfolio").innerHTML="";
+    document.getElementById("errorDesignation").innerHTML="";
+    document.getElementById("errorStartDate").innerHTML="";
+    document.getElementById("errorWebSite").innerHTML="";
     document.getElementById("errorSalary").innerHTML="";
-    document.getElementById("errorName").innerHTML="";
-    document.getElementById("errorEmail").innerHTML="";
-    document.getElementById("errorPhone").innerHTML="";
+    document.getElementById("errorUserName").innerHTML="";
+    document.getElementById("errorUserMail").innerHTML="";
+    document.getElementById("errorPhn").innerHTML="";
 
-    if(position.length == 0)
+    if(designation.length == 0)
     {
-        document.getElementById("errorPosition").innerHTML="Select the position";
+        document.getElementById("errorDesignation").innerHTML="Select the designation";
         event.preventDefault();
     }
 
     if(startDate.length == 0)
     {
-        document.getElementById("errorStart").innerHTML="Select the startDate";
+        document.getElementById("errorStartDate").innerHTML="Select the startDate";
         event.preventDefault();
     }
 
-    if(portfolio.length == 0)
+    if(webSite.length == 0)
     {
-        document.getElementById("errorPortfolio").innerHTML="Enter the protfolio portfolio";
+        document.getElementById("errorWebSite").innerHTML="Enter the protfolio website";
         event.preventDefault();
     }
    
@@ -49,39 +49,39 @@ function val(event)
         event.preventDefault();
     }
 
-    if(firstName.length == 0 || lastName.length == 0)
+    if(fname.length == 0 || lname.length == 0)
     {
-        if(firstName.length == 0 && lastName.length == 0)
+        if(fname.length == 0 && lname.length == 0)
         {
-            document.getElementById("errorName").innerHTML="Enter the First & Last name";
+            document.getElementById("errorUserName").innerHTML="Enter the First & Last name";
             event.preventDefault();
         }
-        else if(lastName.length == 0)
+        else if(lname.length == 0)
         {
-            document.getElementById("errorName").innerHTML="Enter the Last name";
+            document.getElementById("errorUserName").innerHTML="Enter the Last name";
             event.preventDefault();
         }
-        else if(firstName.length == 0)
+        else if(fname.length == 0)
         {
-            document.getElementById("errorName").innerHTML="Enter the First name";
+            document.getElementById("errorUserName").innerHTML="Enter the First name";
             event.preventDefault();
         }
     }
 
-    if(email.length == 0)
+    if(userEmail.length == 0)
     {
-        document.getElementById("errorEmail").innerHTML="Enter the email id";
+        document.getElementById("errorUserMail").innerHTML="Enter the email id";
         event.preventDefault();
     }
-    else if(!emailRegex.test(email))
+    else if(!emailRegex.test(userEmail))
     {
-        document.getElementById("errorEmail").innerHTML="Format not  valid";
+        document.getElementById("errorUserMail").innerHTML="Format not  valid";
         event.preventDefault();
     }
 
-    if(phone1.length == 0 && phone2.length == 0 && phone3.length == 0) 
+    if(phn1.length == 0 && phn2.length == 0 && phn3.length == 0) 
     {
-        document.getElementById("errorPhone").innerHTML="Enter the phone number";
+        document.getElementById("errorPhn").innerHTML="Enter the phone number";
         event.preventDefault();
     }
 

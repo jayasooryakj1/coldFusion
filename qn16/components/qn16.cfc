@@ -1,4 +1,4 @@
-<cffunction  name = "func">
+<cffunction  name = "func" returnType="string">
     <cfset res = " ">
     <cfloop index = "i" from = 1 to = 3>
         <cfset res = res & i &" ">

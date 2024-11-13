@@ -1,6 +1,6 @@
 <cfcomponent>
     <cffunction  name="funcRating" returnType="string">
-    <cfargument name="number" type="any" required="true">
+        <cfargument name="number" type="any" required="true">
         <cfset local.value=arguments.number>
         <cfif local.value EQ 5>
             <cfset local.result="Very Good">
