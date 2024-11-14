@@ -36,12 +36,12 @@
                 <cfset local.result = "Incorrect password">
             <cfelse>
                 <cfquery name="userType">
-                    select userid, roleId as role from users where username='#arguments.userName#'
+                    select userid, roleId from users where userName='#arguments.userName#'
                 </cfquery>
-                <cfif userType.role=="User">
+                <cfif userType.roleId==3>
                     <cfset session.userId = userType.userid>
                     <cfset local.result = "User">
-                <cfelse>
+                <cfelseif userType.roleId==1|| userType.roleId==2>
                     <cfset session.adminId = userType.userid>
                     <cfset local.result = "Admin">
                 </cfif>
@@ -65,29 +65,52 @@
         <cfreturn page>
     </cffunction>
 
-    <cffunction  name="dltFunction">
+    <cffunction  name="dltFunction" access="remote">
         <cfargument  name="dlt">
         <cfquery name="dltQuery">
-            delete from pageTable where pageid = #arguments.dlt#
+            delete from pagesTable where pageid = '#arguments.dlt#'
         </cfquery>
-        <cflocation  url="admin.cfm">
+        <cfreturn true>
     </cffunction>
 
-    <cffunction  name="editFunction">
+    <cffunction  name="editFunction" access="remote">
         <cfargument  name="pagename">
         <cfargument  name="pagedesc">
-        <cfquery name="editQuery">
-            update pageTable set pagename='#arguments.pagename#', pagedesc='#arguments.pagedesc#' where pageid=#session.editId#
+        <cfquery name="countName">
+            select count(pagename) as count from pagesTable where pagename='#arguments.pagename#'
         </cfquery>
-        <cflocation  url="admin.cfm">
+        <cfquery name="pageId">
+            select pageid from pagesTable where pagename='#arguments.pagename#'
+        </cfquery>
+        <cfif #countName.count# GT 0 and pageId.pageid != '#session.editId#'>
+            <cfset local.result = 1>
+        <cfelse>
+            <cfquery name="editQuery">
+                update pagesTable set pagename='#arguments.pagename#', pagedesc='#arguments.pagedesc#' where pageid='#session.editId#'
+            </cfquery>
+            <cfset local.result = 2>
+            <cflocation  url="admin.cfm">
+        </cfif>
+        <cfreturn local.result>
     </cffunction>
 
     <cffunction  name="addFunction">
         <cfargument  name="pagename">
         <cfargument  name="pagedesc">
-        <cfquery name="addQuery">
-            insert into pageTable values ('#arguments.pagename#', '#arguments.pagedesc#')
+        <cfset local.createdOn = dateFormat(now(),'dd/mm/yyyy')>
+        <cfset local.updatedOn = dateFormat(now(),'dd/mm/yyyy')>
+        <cfquery name="countName">
+            select count(pagename) as count from pagesTable where pagename='#arguments.pagename#'
         </cfquery>
+        <cfif countName.count GT 0>
+            <cfset local.result = 0>
+        <cfelse>
+            <cfquery name="addQuery">
+                insert into pagesTable (pageName, pageDesc, _createdBy, _updatedBy, _createdOn, _updatedOn) values ('#arguments.pagename#', '#arguments.pagedesc#', '#session.adminId#', '#session.adminId#', '#local.createdOn#', '#local.updatedOn#')
+                <cfset local.result = 1>
+            </cfquery>
+        </cfif>
+        <cfreturn local.result>
         <cflocation  url="admin.cfm">
     </cffunction>
 

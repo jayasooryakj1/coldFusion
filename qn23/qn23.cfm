@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>>qn23</title>
+        <title>qn23</title>
         <link rel="stylesheet" href="../../bootstrap-5.0.2-dist/bootstrap-5.0.2-dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/style.css">
         <script src="./js/script.js"></script>
@@ -43,8 +43,7 @@
                         <span id="errorStartDate" class="text-danger"></span>
                     </div>
                     <div class="qn3-div p-3">
-                        <label class="qns-label fw-bold mb-2">Portfolio Web Site</label>
-                        <span class="text-danger fw-bold">*</span><br>
+                        <label class="qns-label fw-bold mb-2">Portfolio Web Site</label><br>
                         <input class="w-50" type="text" value="http://"  name="webSite" id="webSite"><br>
                         <span id="errorWebSite" class="text-danger"></span>
                     </div>
@@ -53,9 +52,11 @@
                         <input class="w-50" type="file"   name="userResume">
                     </div>
                         <div class="qn5-div p-3">
-                            <label class="qns-label fw-bold mb-2">Salary</label><br>
-                            <label class="me-2">$</label><input class="salaryDollar" type="text" id="salaryDollar" name="salaryDollar"><span class="mx-2">.</span><input class="salaryCent" type="text" id="salaryCent" name="salaryCent"><br>
-                            <span id="errorSalary" class="text-danger"></span>
+                            <label class="qns-label fw-bold mb-2">Salary Requirements</label><br>
+                            <label class="me-2">$</label>
+                            <input class="salaryDollar" type="text" id="salaryDollar" name="salaryDollar">
+                            <span class="mx-2">.</span>
+                            <input class="salaryCent" type="text" id="salaryCent" name="salaryCent"><br>
                         </div>
                     </div>
                     <div class="contactInfo p-2">
@@ -85,24 +86,24 @@
                 </div>
             </form>
             <cfif structKeyExists(form, "submit")>
-            <cfset local.structUser=structNew()>
-            <cfset local.structUser["designation"] = form.designation>
-            <cfset local.structUser["locateOption"] = form.locateOption>
-            <cfset local.structUser["startDate"] = form.startDate>
-            <cfset local.structUser["webSite"] = form.webSite>
-            <cfset local.structUser["userResume"] = form.userResume>
-            <cfset local.structUser["salary"] = form.salaryDollar & "." & form.salaryCent>
-            <cfset local.structUser["fname"] = form.fname>
-            <cfset local.structUser["lname"] = form.lname>
-            <cfset local.structUser["userEmail"] = form.userEmail>
-            <cfset local.structUser["phn"] = form.phn1 & form.phn2 & form.phn3>
-            <cfset local.result="">
-            <cfset local.obj = createObject("component","components.check_23")>
-            <cfset local.result = local.obj.fnUser(local.structUser)>
-            <div class="bg-success text-white fw-bold p-2">
-                <cfdump  var="#local.result#">
-            </div>
-        </cfif>
+                <cfset local.structUser=structNew()>
+                <cfset local.structUser["designation"] = form.designation>
+                <cfset local.structUser["locateOption"] = form.locateOption>
+                <cfset local.structUser["startDate"] = form.startDate>
+                <cfset local.structUser["webSite"] = form.webSite>
+                <cfset local.structUser["userResume"] = form.userResume>
+                <cfset local.structUser["salary"] = form.salaryDollar & "." & form.salaryCent>
+                <cfset local.structUser["fname"] = form.fname>
+                <cfset local.structUser["lname"] = form.lname>
+                <cfset local.structUser["userEmail"] = form.userEmail>
+                <cfset local.structUser["phn"] = form.phn1 & form.phn2 & form.phn3>
+                <cfset local.result="">
+                <cfset local.obj = createObject("component","components.qn23")>
+                <cfset local.result = local.obj.fnUser(local.structUser)>
+                <div class="bg-success text-white fw-bold p-2">
+                    <cfdump  var="#local.result#">
+                </div>
+            </cfif>
         </div>
     </body>
 </html>

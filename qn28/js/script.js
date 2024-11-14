@@ -19,3 +19,18 @@ function validateSignUp(event){
         event.preventDefault();
     }
 }
+
+function deletePage(dltObj){
+    if(confirm("Delete page?")){
+        $.ajax({
+            type:"post",
+            url:"components/qn28.cfc?method=dltFunction",
+            data:{dlt:dltObj.value},
+            success:function(result){
+                if(result){
+                    location.reload();
+                }
+            }
+        })
+    }
+}

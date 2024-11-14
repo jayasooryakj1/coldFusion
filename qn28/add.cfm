@@ -21,6 +21,15 @@
         <cfif structKeyExists(form, "submit")>
             <cfset local.addObj = createObject("component", "components.qn28")>
             <cfset local.result = local.addObj.addFunction(form.pagename, form.pagedesc)>
+            <div class="text-center">
+                <cfoutput>
+                    <cfif local.result==0>
+                        Page name already exists
+                    <cfelse>
+                        <cflocation  url="admin.cfm">
+                    </cfif>
+                </cfoutput>
+            </div>
         </cfif>
     </body>
 </html>
