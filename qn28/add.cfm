@@ -12,9 +12,9 @@
             <h5>ADD</h5>
             <form method="post">
                 <label>Enter page name</label>
-                <input type="text" name="pagename"><br><br>
+                <input type="text" name="pagename" required><br><br>
                 <label>Enter page description</label>
-                <input type="text" name="pagedesc"><br><br>
+                <input type="text" name="pagedesc" required><br><br>
                 <input type="submit" name="submit">
             </form>
         </div>

@@ -16,6 +16,8 @@
                     <input type="text" name="userName" id="userName"><br><br>
                     <label for="">Password: </label>
                     <input type="password" name="password" id="password"><br><br>
+                    <label for="">Re-Enter Password: </label>
+                    <input type="password" name="rePassword" id="rePassword"><br><br>
                     <label for="">Role</label><br>
                     <input type="radio" name="role" id="admin" value="1">&nbsp; Admin <br>
                     <input type="radio" name="role" id="editor" value="2">&nbsp; Editor <br>

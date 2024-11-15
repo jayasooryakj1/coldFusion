@@ -15,7 +15,7 @@
                 <form method="post">
                     <div class="d-flex">
                         <button class="p-2 mb-4" name="add" type="submit" value="add">Add a page</button>
-                        <button class="p-2 mb-4 ms-2" name="logOut" type="submit" value="logOut">Logout</button>
+                        <button class="p-2 mb-4 ms-2" name="logOut" onclick="logout()" type="submit" value="logOut">Logout</button>
                         <h4 class="text-center w-75">ADMIN</h4>
                     </div>
                     <cfoutput>
@@ -33,8 +33,12 @@
                                 <tr>
                                     <td class="border">#local.result.pagename#</td>
                                     <td class="border">#local.result.pagedesc#</td>
-                                    <td class="border">#local.result._createdOn#</td>
-                                    <td class="border">#local.result._updatedOn#</td>
+                                    <cfset local.createName = createObject("component", "components.qn28")>
+                                    <cfset local.value = local.createName.findCreator(#local.result._createdBy#)>
+                                    <td class="border">#local.result._createdOn# <br>by: #local.value#</td>
+                                    <cfset local.updateName = createObject("component", "components.qn28")>
+                                    <cfset local.value2 = local.updateName.findUpdate(#local.result._updatedBy#)>
+                                    <td class="border">#local.result._updatedOn# <br>by: #local.value2#</td>
                                     <td class="border"><button class="p-2" name="edit" type="submit" value="#local.result.pageid#">Edit</button></td>
                                     <td class="border"><button class="p-2" name="dlt" type="button" value="#local.result.pageid#" onclick="deletePage(this)">Delete</button></td>
                                 <tr>
@@ -50,10 +54,6 @@
             </cfif>
             <cfif structKeyExists(form, "add")>
                 <cflocation  url="add.cfm">
-            </cfif>
-            <cfif structKeyExists(form, "logOut")>
-                <cfset local.logoutObj = createObject("component", "components.qn28")>
-                <cfset local.value = local.logoutObj.logoutFunction()>
             </cfif>
         <cfelse>
             <cflocation  url="index.cfm">

@@ -13,28 +13,28 @@
             <cfset local.result = local.value.pageList()>
             <cfset local.id = url.id>
             <form method="post">
-                <button name="logOut" type="submit" value="logOut">Log Out</button><br><br>
+                <div class="d-flex mb-2">
+                    <button class="p-1" name="logOut" type="button" onclick="logout()" value="logOut">Logout</button><br><br>
+                </div>
             </form>
-            <table class="border table table-striped">
+            <table class="border w-100 table table-striped">
                 <tr>
-                    <th>Page Name</th>
-                    <th>PageDesc</th>
+                    <th class="w-25">Page Name</th>
+                    <th>Page description</th>
                 </tr>
                 <cfloop query="#local.result#">
                     <cfif local.result.pageid==local.id>
                         <cfoutput>
                             <tr>
-                                <td>#local.result.pagename#</td>
-                                <td>#local.result.pagedesc#</td>
+                                <td class="border">#local.result.pagename#</td>
+                                <td class="border">#local.result.pagedesc#</td>
                             </tr>
                         </cfoutput>
                     </cfif>
                 </cfloop>
             </table>
         </div>
-        <cfif structKeyExists(form, "logOut")>
-            <cfset local.logoutObj = createObject("component", "components.qn28")>
-            <cfset local.value = local.logoutObj.logoutFunction()>
-        </cfif>
+        <script src="js/script.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     </body>
 </html>

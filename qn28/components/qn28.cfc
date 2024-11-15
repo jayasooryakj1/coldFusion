@@ -85,8 +85,10 @@
         <cfif #countName.count# GT 0 and pageId.pageid != '#session.editId#'>
             <cfset local.result = 1>
         <cfelse>
+            <cfset local.editDate = dateFormat(now(), 'dd/mm/yyyy')>
+            <cfset local.editDateString = '#local.editDate#'>
             <cfquery name="editQuery">
-                update pagesTable set pagename='#arguments.pagename#', pagedesc='#arguments.pagedesc#' where pageid='#session.editId#'
+                update pagesTable set pagename='#arguments.pagename#', pagedesc='#arguments.pagedesc#', _updatedOn='#local.editDate#' where pageid='#session.editId#'
             </cfquery>
             <cfset local.result = 2>
             <cflocation  url="admin.cfm">
@@ -114,9 +116,25 @@
         <cflocation  url="admin.cfm">
     </cffunction>
 
-    <cffunction  name="logoutFunction">
-        <cfset sessionInvalidate()>
-        <cflocation  url="index.cfm">
+    <cffunction  name="logoutFunction" access="remote">
+        <cfset structClear(session)>
+        <cfreturn true>
+    </cffunction>
+
+    <cffunction  name="findCreator">
+        <cfargument  name="createdUser">
+        <cfquery name="creator">
+            select userName from users where userId='#arguments.createdUser#'
+        </cfquery>
+        <cfreturn #creator.userName#>
+    </cffunction>
+    
+    <cffunction  name="findUpdate">
+        <cfargument  name="updateUser">
+        <cfquery name="updatedBy">
+            select userName from users where userId='#arguments.updateUser#'
+        </cfquery>
+        <cfreturn #updatedBy.userName#>
     </cffunction>
 
 </cfcomponent>

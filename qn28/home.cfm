@@ -13,7 +13,9 @@
                 <cfset local.value = createObject("component","components.qn28")>
                 <cfset local.result = local.value.pageList()>
                 <form method="post">
-                    <button name="logOut" type="submit" value="logOut">Log Out</button><br><br>
+                    <div class="d-flex mb-2">
+                        <button class="p-1" name="logOut" onclick="logout()" type="button" value="logOut">Logout</button><br><br>
+                    </div>
                 </form>
                 <table class="border table table-striped">
                     <tr>
@@ -30,12 +32,10 @@
                     </cfloop>
                 </table>
             </div>
-            <cfif structKeyExists(form, "logOut")>
-                <cfset local.logoutObj = createObject("component", "components.qn28")>
-                <cfset local.value = local.logoutObj.logoutFunction()>
-            </cfif>
         <cfelse>
             <cflocation  url="index.cfm">
         </cfif>
+        <script src="js/script.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     </body>
 </html>
